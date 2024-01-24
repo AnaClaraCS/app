@@ -1,0 +1,35 @@
+<div class="card p0 m-2" style="width: 18rem;">
+  <div class="card-body d-flex">
+
+    <!-- Done -->
+    <div>
+      <%= button_to toggle_done_task_path(task), method: :patch, class: 'btn botao-icone m-0 p-0' do %>
+        <% if task.done %>  
+          <i class="bi bi-check-circle-fill"></i>
+        <% else %>
+          <i class="bi bi-circle"></i> 
+        <% end %>
+      <% end %>
+    </div>   
+
+    <!-- Title -->
+    <div class="card-title flex-fill px-2"><%= task.title %></div>
+
+    <div class="d-flex">
+      <!-- Edit -->  
+      <%= link_to edit_task_path(task) do %>
+          <i class="bi bi-pencil-square"></i>
+      <% end %>
+    
+
+      <!-- Delete -->
+      <%= button_to task,
+          method: :delete,
+          data: { confirm: "Are you sure?" },
+          class: 'btn botao-icone m-0 p-0 px-2' do %>
+        <i class="bi bi-trash-fill text-danger"></i>
+      <% end %>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <%= render "tasks/form" %>
+  </div>
+</div>
+
+<div class="d-flex align-content-between flex-wrap ">
+  <% @tasks.each do |task| %>
+    <%= render partial: "tasks/card", locals: { task: task } %>
+  <% end %>
+</div>
+
+
