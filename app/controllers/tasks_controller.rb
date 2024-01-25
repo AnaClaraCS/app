@@ -14,13 +14,14 @@ class TasksController < ApplicationController
     end
 
     def create
+      @tasks = Task.all
       @task = Task.new(task_params)
       if @task.save
         flash[:success] = "Object successfully created"
         redirect_to root_path
       else
         flash[:error] = "Something went wrong"
-        render 'new'
+        render 'tasks/index'
       end
     end
 

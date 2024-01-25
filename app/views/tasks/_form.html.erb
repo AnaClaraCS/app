@@ -1,32 +1,14 @@
 <%= form_with(model: @task, local: true, method: @task.persisted? ? :patch : :post) do |form| %>
-  <%
-=begin%>
- <% if task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
-      <ul>
-        <% task.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <div class="input-group mb-3">
+    <div class="input-group-text">
+      <%= form.check_box :done %>
     </div>
-  <% end %> 
-<%
-=end%>
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-    <% @task.errors.full_messages_for(:title).each do |message| %>
-      <div class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> <%= message %></div>
-    <% end %>
+    <%= form.text_field :title, class:'form-control' %>
+      
+      <%= form.submit class:'btn btn-outline-secondary'%>
   </div>
-  <div>
-    <%= form.label :done %>
-    <%= form.check_box :done %>
-  </div>
+<% @task.errors.full_messages_for(:title).each do |message| %>
+        <div class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> <%= message %></div>
+      <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
